@@ -1,0 +1,34 @@
+CREATE TABLE pages (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    slug VARCHAR(255) NOT NULL UNIQUE,
+    layout_type VARCHAR(100),
+    status ENUM('published', 'draft') DEFAULT 'draft',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE page_components (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    page_id INT NOT NULL,
+    type VARCHAR(100) NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    content JSON,
+    position INT DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (page_id) REFERENCES pages(id)
+);
+
+CREATE TABLE icon_fields (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    page_id INT NOT NULL,
+    icon_url VARCHAR(255),
+    icon_name VARCHAR(100),
+    title VARCHAR(255) NOT NULL,
+    description TEXT, 
+    position INT DEFAULT 0, 
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (page_id) REFERENCES pages(id)
+);
