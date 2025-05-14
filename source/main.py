@@ -1,5 +1,3 @@
-__author__ = 'marble_xu'
-
 from . import tool
 from . import constants as c
 from .state import mainmenu, screen, level

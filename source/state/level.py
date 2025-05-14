@@ -1,5 +1,3 @@
-__author__ = 'marble_xu'
-
 import os
 import json
 import pygame as pg
@@ -333,7 +331,6 @@ class Level(tool.State):
             ratio = 0.7
         collided_func = pg.sprite.collide_circle_ratio(ratio)
         for i in range(self.map_y_len):
-            hypo_zombies = []
             for zombie in self.zombie_groups[i]:
                 if zombie.state != c.WALK:
                     continue
@@ -346,7 +343,7 @@ class Level(tool.State):
                     elif plant.name == c.REDWALLNUTBOWLING:
                         if plant.state == c.IDLE:
                             plant.setAttack()
-                    elif plant.name != c.SPIKEWEED:
+                    elif plant.name not in (c.SPIKEWEED, c.POTATOMINE):
                         zombie.setAttack(plant)
 
             for hypno_zombie in self.hypno_zombie_groups[i]:

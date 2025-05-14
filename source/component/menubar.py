@@ -1,5 +1,3 @@
-__author__ = 'marble_xu'
-
 import random
 import pygame as pg
 from .. import tool
@@ -27,28 +25,56 @@ plant_frozen_time_list = [7500, 7500, 7500, 30000, 50000, 7500, 7500, 7500, 7500
 all_card_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 
 def getSunValueImage(sun_value):
+    # Tạo font mặc định, kích cỡ 22
     font = pg.font.SysFont(None, 22)
+    
+    # Chiều rộng của ảnh surface
     width = 32
+    
+    # Render chuỗi sun_value thành ảnh chữ với màu chữ NAVYBLUE và nền LIGHTYELLOW
     msg_image = font.render(str(sun_value), True, c.NAVYBLUE, c.LIGHTYELLOW)
+    
+    # Lấy rect của ảnh chữ để lấy thông tin kích thước
     msg_rect = msg_image.get_rect()
+    
+    # Lấy chiều rộng của ảnh chữ
     msg_w = msg_rect.width
 
+    # Tạo surface mới với kích thước 32x17 pixel
     image = pg.Surface([width, 17])
+    
+    # Tính vị trí x để canh phải chữ bên trong surface
     x = width - msg_w
 
+    # Tô nền toàn bộ surface với màu LIGHTYELLOW
     image.fill(c.LIGHTYELLOW)
+    
+    # Vẽ ảnh chữ lên surface tại vị trí (x, 0)
     image.blit(msg_image, (x, 0), (0, 0, msg_rect.w, msg_rect.h))
+    
+    # Đặt màu BLACK làm màu trong suốt cho surface
     image.set_colorkey(c.BLACK)
+    
+    # Trả về surface đã tạo xong
     return image
 
 def getCardPool(data):
+    # Tạo danh sách rỗng để chứa chỉ số các cây (plant) tìm được
     card_pool = []
+    
+    # Duyệt từng phần tử (card) trong dữ liệu đầu vào
     for card in data:
+        # Lấy tên cây từ thẻ card
         tmp = card['name']
-        for i,name in enumerate(plant_name_list):
+        
+        # Duyệt qua danh sách tên cây gốc để tìm vị trí khớp
+        for i, name in enumerate(plant_name_list):
+            # Nếu tên cây trùng khớp
             if name == tmp:
+                # Thêm chỉ số cây đó vào card_pool
                 card_pool.append(i)
-                break
+                break  # Dừng vòng lặp vì đã tìm thấy
+    # Trả về danh sách các chỉ số cây
     return card_pool
 
 class Card():
