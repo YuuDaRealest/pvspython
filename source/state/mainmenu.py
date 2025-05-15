@@ -24,7 +24,7 @@ class Menu(tool.State):
     def setupOption(self):
         self.option_frames = []
         frame_names = [c.OPTION_ADVENTURE + '_0', c.OPTION_ADVENTURE + '_1']
-        frame_rect = [0, 0, 165, 77]
+        frame_rect = [0, 0, 205, 120]
         
         for name in frame_names:
             self.option_frames.append(tool.get_image(tool.GFX[name], *frame_rect, c.BLACK, 1.7))
@@ -32,8 +32,8 @@ class Menu(tool.State):
         self.option_frame_index = 0
         self.option_image = self.option_frames[self.option_frame_index]
         self.option_rect = self.option_image.get_rect()
-        self.option_rect.x = 435
-        self.option_rect.y = 75
+        self.option_rect.x = 390
+        self.option_rect.y = 65
         
         self.option_start = 0
         self.option_timer = 0

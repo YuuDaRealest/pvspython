@@ -13,4 +13,4 @@
 * Python-Pygame 1.9
 
 # How To Start Game
-$ python main.py
+$ python3 main.py
