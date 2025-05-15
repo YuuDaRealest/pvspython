@@ -1,6 +1,5 @@
 # PythonPlantsVsZombies
   A simple PlantsVsZombies game. <br>
-  `It's only for personal learning and noncommercial use. If this game infringes the copyright, please let me know.`
 * implement plants: sunflower, peashooter, wallnut, snowpeashooter, cherrybomb, threepeashooter, chomper, puffshroom, potatomine, spikeweed, scaredyshroom, squash, scaredyshroom, jalapeno, sunShroom, iceShroom, hypnoShroom.
 * implement zombies: zombie, flagzombie, coneheadzombie, bucketheadzombie, newspaperzombie.
 * use json file to store level data (e.g.position and time of zombies, background info)
